@@ -3,6 +3,7 @@
 #endif
 
 #include "itkImageRegionConstIterator.h"
+#include <vnl/algo/vnl_levenberg_marquardt.h>
 #include "itkImageRegionIterator.h"
 #include "itkProgressReporter.h"
 #include "itkLevenbergMarquardtOptimizer.h"

@@ -12,10 +12,10 @@
 
   =========================================================================auto=*/
 
-#include <vnl/algo/vnl_convolve.h>
 #include <itkGradientMagnitudeImageFilter.h>
 #include <itkImageRegionIterator.h>
 #include <itkLevenbergMarquardtOptimizer.h>
+#include <vnl/algo/vnl_levenberg_marquardt.h>
 #include "PkSolver.h"
 #include "SignalComputationUtils.h"
 #include "itkTimeProbesCollectorBase.h"

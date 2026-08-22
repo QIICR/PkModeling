@@ -63,7 +63,7 @@ std::vector<float> MultiVolumeMetaDictReader::getTiming()
     }
     else
     {
-      itkGenericExceptionMacro("Missing attribute 'MultiVolume.FrameLabels'.")
+      itkGenericExceptionMacro("Missing attribute 'MultiVolume.FrameLabels'.");
     }
   }
   else
