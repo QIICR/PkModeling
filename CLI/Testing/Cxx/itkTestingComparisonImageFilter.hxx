@@ -98,7 +98,7 @@ namespace itk
         ComparisonImageFilter< TInputImage, TOutputImage >
         ::BeforeThreadedGenerateData()
         {
-            ThreadIdType numberOfThreads = this->GetNumberOfThreads();
+            ThreadIdType numberOfThreads = this->GetNumberOfWorkUnits();
 
             // Initialize statistics about difference image.
             m_MinimumDifference = NumericTraits< OutputPixelType >::max();
@@ -144,7 +144,7 @@ namespace itk
 
             if( validImage->GetBufferedRegion() != testImage->GetBufferedRegion() )
             {
-                itkExceptionMacro( << "Input images have different Buffered Regions." )
+                itkExceptionMacro( << "Input images have different Buffered Regions." );
             }
 
             // Create a radius of pixels.
@@ -264,7 +264,7 @@ namespace itk
         ::AfterThreadedGenerateData()
         {
             // Set statistics about difference image.
-            ThreadIdType numberOfThreads = this->GetNumberOfThreads();
+            ThreadIdType numberOfThreads = this->GetNumberOfWorkUnits();
 
             for ( ThreadIdType i = 0; i < numberOfThreads; ++i )
             {

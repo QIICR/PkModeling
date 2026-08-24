@@ -17,7 +17,6 @@
 
 #include "itkLevenbergMarquardtOptimizer.h"
 #include <math.h>
-#include <vnl/algo/vnl_convolve.h>
 #include "itkArray.h"
 #include <string>
 #include <exception>
@@ -227,8 +226,18 @@ namespace itk
 
     ArrayType Convolution(ArrayType X, ArrayType Y) const
     {
-      ArrayType Z;
-      Z = vnl_convolve(X, Y).extract(X.size(), 0);
+      const unsigned int n = X.size();
+      ArrayType Z(n, 0.0);
+      for (unsigned int i = 0; i < n; ++i)
+        {
+        ValueType acc = 0;
+        const unsigned int jmin = (i + 1 > Y.size()) ? (i + 1 - Y.size()) : 0u;
+        for (unsigned int j = jmin; j <= i; ++j)
+          {
+          acc += X[j] * Y[i - j];
+          }
+        Z[i] = acc;
+        }
       return Z;
     };
 
